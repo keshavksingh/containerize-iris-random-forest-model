@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: iris-model-server
-        image: mlmeshcontainerregistry.azurecr.io/iris-model-server:latest
+        image: mlmeshcontainerregistry.azurecr.io/iris-model-server-latest:latest
         ports:
         - containerPort: 8000
 ---
