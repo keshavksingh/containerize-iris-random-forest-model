@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iris-model-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: iris-model-server
+  template:
+    metadata:
+      labels:
+        app: iris-model-server
+    spec:
+      containers:
+      - name: iris-model-server
+        image: mlmeshcontainerregistry.azurecr.io/iris-model-server:latest
+        ports:
+        - containerPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: iris-model-server
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8000
+    targetPort: 8000
+  selector:
+    app: iris-model-server
